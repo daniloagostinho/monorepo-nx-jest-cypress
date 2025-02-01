@@ -2,7 +2,9 @@
   "name": "@my-angular-app/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "cypress-run": "npx cypress open --config-file=apps/my-angular-app-e2e/cypress.config.ts"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~19.1.0",
