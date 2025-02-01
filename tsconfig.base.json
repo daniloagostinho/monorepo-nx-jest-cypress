@@ -14,7 +14,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@e2e/*": ["apps/my-angular-app-e2e/src/e2e/*"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

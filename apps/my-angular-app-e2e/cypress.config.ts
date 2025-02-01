@@ -12,6 +12,8 @@ export default defineConfig({
       ciWebServerCommand: 'npx nx run my-angular-app:serve-static',
       ciBaseUrl: 'http://localhost:4200',
     }),
+    specPattern: '**/*.cy.{js,jsx,ts,tsx}',
+    supportFile: false,
     baseUrl: 'http://localhost:4200',
   },
 });
