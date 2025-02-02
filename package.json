@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "cypress-run": "npx cypress open --config-file=apps/my-angular-app-e2e/cypress.config.ts"
+    "cypress-run-browser": "npx cypress open --config-file=apps/my-angular-app-e2e/cypress.config.ts",
+    "cypress-run-terminal": "nx e2e my-angular-app-e2e"
   },
   "private": true,
   "dependencies": {
