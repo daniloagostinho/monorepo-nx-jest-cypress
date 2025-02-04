@@ -1,33 +1,33 @@
-describe('Login Test', () => {
+describe('Form Validation', () => {
   beforeEach(() => {
     cy.visit('/');
   });
 
-  it('should display error message on invalid login', () => {
-    // Digita um e-mail inválido
-    cy.get('#email').type('usuario@errado.com');
-    
-    // Digita uma senha errada
-    cy.get('#password').type('senhaerrada');
-
-    // Clica no botão de login
-    cy.get('button').click();
-
-    // Verifica se aparece a mensagem de erro
-    cy.contains('Credenciais inválidas.').should('be.visible');
+  it('should disable login button when fields are empty', () => {
+    cy.get('#login-btn').invoke('attr', 'disabled').should('exist');
+    cy.get('#login-btn').should('be.disabled');
   });
 
-  it('should login successfully with correct credentials', () => {
-    // Digita o e-mail correto
+  it('should enable login button when both fields are filled', () => {
     cy.get('#email').type('teste@teste.com');
-
-    // Digita a senha correta
     cy.get('#password').type('123456');
+  
+    // Aguarda até que o botão seja habilitado
+    cy.get('#login-btn').should('not.be.disabled');
+  
+    // Só clica depois que ele estiver habilitado
+    cy.get('#login-btn').click();
+  });
+  
 
-    // Clica no botão de login
-    cy.get('button').click();
+  it('should show error message when trying to submit empty form', () => {
+    cy.get('#login-btn').click();
+    cy.contains('Todos os campos são obrigatórios.').should('be.visible');
+  });
 
-    // Verifica se aparece a mensagem de sucesso
-    cy.contains('Login bem-sucedido!').should('be.visible');
+  it('should enable login button when both fields are filled', () => {
+    cy.get('#email').type('teste@teste.com');
+    cy.get('#password').type('123456');
+    cy.get('#login-btn').should('not.be.disabled');
   });
 });
